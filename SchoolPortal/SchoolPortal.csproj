@@ -77,6 +77,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.1\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -196,10 +200,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Errors\Controllers\ErrorManagerController.cs" />
+    <Compile Include="Areas\Errors\ErrorsAreaRegistration.cs" />
     <Compile Include="Areas\Questions\Controllers\QuestionsController.cs" />
     <Compile Include="Areas\Questions\QuestionsAreaRegistration.cs" />
     <Compile Include="ControllerFactory\CustomControllerFactory.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -325,6 +332,17 @@
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="Areas\Errors\Views\web.config" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\Errors\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Errors\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Errors\Views\ErrorManager\Index.cshtml" />
+    <Content Include="Areas\Errors\Views\ErrorManager\Status404.cshtml" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
@@ -1633,8 +1651,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Errors\Models\" />
     <Folder Include="Areas\Questions\Models\" />
     <Folder Include="Filters\" />
+    <Folder Include="NewFolder1\" />
     <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>

@@ -12,10 +12,11 @@ using SchoolPortal.Models;
 using System.Text.RegularExpressions;
 using System.Web.Caching;
 using System.Runtime.Caching;
+using SchoolPortal.Controllers;
 
 namespace SchoolPortal.Areas.Questions.Controllers
 {
-    public class QuestionsController : Controller
+    public class QuestionsController : BaseController
     {
         private SchoolPortalContext db = new SchoolPortalContext();
 
