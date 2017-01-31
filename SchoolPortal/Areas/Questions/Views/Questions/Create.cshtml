@@ -1,0 +1,75 @@
+﻿@using GlobalizationResources.Resources.Views
+@model Entities.Question
+
+@{
+    ViewBag.Title = Questions.Create;
+}
+
+@using (Ajax.BeginForm(new AjaxOptions()))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-md-8 @(ViewBag.IsArabic ? "col-md-push-4" : "")">
+                <div class="form-group">
+                    <div class="page-header">
+                        <h4>@Questions.Question</h4>
+                    </div>
+                    <div class="col-md-12">
+                        @Html.TextAreaFor(model => model.Text, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="page-header">
+                        <h4>@Questions.Explanation</h4>
+                    </div>
+                    <div class="col-md-12">
+                        @Html.TextAreaFor(model => model.Explanation, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Explanation, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 @(ViewBag.IsArabic ? "col-md-pull-8" : "")">
+                <div class="page-header">
+                    <h4>General</h4>
+                </div>
+                <div class="form-group">
+                    @Html.DropDownList("QuestionTypeId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.QuestionTypeId, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.DropDownList("QuestionLevelId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.QuestionLevelId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/ckeditor/adapters/jquery.js"></script>
+
+    <script>
+        $(function () {
+            $('#Text, #Explanation').ckeditor();
+        });
+    </script>
+}

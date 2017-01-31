@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Entities.Curriculum" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Curriculum.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entities.Grade" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Grade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entities.CurriculumGrade" Collapsed="true">
+    <Position X="2" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAEAEAAAEAAAA=</HashCode>
+      <FileName>CurriculumGrade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entities.Year" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQCAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Year.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entities.School" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>School.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entities.SchoolYear" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAABAAAgAAAAAAAAAAgAAAAAAAAQAAAAEAAAAA=</HashCode>
+      <FileName>SchoolYear.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entities.SchoolCurriculum" Collapsed="true">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SchoolCurriculum.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entities.Student" Collapsed="true">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAAAIAAAAAAAAQAABAAAAAAAAAAAAQAAAg=</HashCode>
+      <FileName>Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entities.SchoolCurriculumStudent" Collapsed="true">
+    <Position X="4.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECAAA=</HashCode>
+      <FileName>SchoolCurriculumStudent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
