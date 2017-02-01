@@ -14,7 +14,17 @@ namespace SchoolPortal.Areas.Errors.Controllers
             return View();
         }
 
+        public ActionResult Status403()
+        {
+            return View();
+        }
+
         public ActionResult Status404()
+        {
+            return View();
+        }
+
+        public ActionResult Status500()
         {
             return View();
         }

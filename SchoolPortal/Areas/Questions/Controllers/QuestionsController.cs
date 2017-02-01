@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Web.Caching;
 using System.Runtime.Caching;
 using SchoolPortal.Controllers;
+using SchoolPortal.ControllersHandlers;
 
 namespace SchoolPortal.Areas.Questions.Controllers
 {
@@ -49,8 +50,7 @@ namespace SchoolPortal.Areas.Questions.Controllers
         //    }
         //    return View(question);
         //}
-
-        [HandleError]
+        
         // GET: Questions/Questions/Create
         public ActionResult Create()
         {

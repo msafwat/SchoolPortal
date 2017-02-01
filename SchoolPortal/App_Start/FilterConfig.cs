@@ -8,7 +8,7 @@ namespace SchoolPortal
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute() { ExceptionType = typeof(Exception), Order = 0, View = "Error/ErrorManager/Status404" });
+            filters.Add(new HandleErrorAttribute() { ExceptionType = typeof(Exception), Order = 0, View = "Errors/ErrorManager" });
         }
     }
 }
