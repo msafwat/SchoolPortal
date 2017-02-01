@@ -50,6 +50,7 @@ namespace SchoolPortal.Areas.Questions.Controllers
         //    return View(question);
         //}
 
+        [HandleError]
         // GET: Questions/Questions/Create
         public ActionResult Create()
         {
