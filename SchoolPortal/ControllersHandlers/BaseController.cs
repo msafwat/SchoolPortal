@@ -1,4 +1,6 @@
-﻿using NLog;
+﻿using BusinessLogicLayer;
+using NLog;
+using SchoolPortal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,8 @@ namespace SchoolPortal.ControllersHandlers
 {
     public class BaseController : Controller
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        protected static Logger logger = LogManager.GetCurrentClassLogger();
+        protected BusinessLogicFacade facade = new BusinessLogicFacade();
 
         protected override void OnException(ExceptionContext filterContext)
         {
@@ -27,6 +30,14 @@ namespace SchoolPortal.ControllersHandlers
             //}
 
             base.OnException(filterContext);
+        }
+
+        public bool IsArabic
+        {
+            get
+            {
+                return Session["culture"].ToString() == "ar-EG";
+            }
         }
     }
 }

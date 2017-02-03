@@ -13,7 +13,7 @@ namespace DataAccessLayer.UnitsOfWork
     {
         IRepository<Question> GetQuestionRepository();
 
-        void Save();
+        Task<int> Save();
 
         int Execute(string statement, params object[] parameters);
 
