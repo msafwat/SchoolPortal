@@ -1753,6 +1753,10 @@
       <Project>{ac40d0b6-6a9d-49b4-9c02-8f35b97f12cf}</Project>
       <Name>GlobalizationResources</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{6ce523ef-aa01-449f-94a5-b1a6726c10a5}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

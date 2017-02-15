@@ -11,17 +11,11 @@ namespace SchoolPortal.ControllersHandlers
 {
     public class BaseController : Controller
     {
-        protected static Logger logger = LogManager.GetCurrentClassLogger();
         protected BusinessLogicFacade facade = new BusinessLogicFacade();
 
         protected override void OnException(ExceptionContext filterContext)
         {
-            logger.Log(LogLevel.Error, "\r\nError Code: {0}\r\nMessage: {1}\r\nStack Trace: {2}\r\nInner Exception: {3}\r\n{4}",
-                Guid.NewGuid().ToString(),
-                filterContext.Exception.Message,
-                filterContext.Exception.StackTrace,
-                filterContext.Exception.InnerException,
-                "##################################################");
+            Logger.Logger.LogException(filterContext.Exception);
 
             //if (filterContext.HttpContext.IsCustomErrorEnabled)
             //{
@@ -36,7 +30,7 @@ namespace SchoolPortal.ControllersHandlers
         {
             get
             {
-                return Session["culture"].ToString() == "ar-EG";
+                return Session["culture"] == null ? false : Session["culture"].ToString() == "ar-EG";
             }
         }
     }
