@@ -18,7 +18,10 @@ namespace SchoolPortal.ControllersHandlers
             string culture = "en-US";
             if (requestContext.HttpContext.Request.Cookies["culture"] == null)
             {
-                requestContext.HttpContext.Response.Cookies.Add(new HttpCookie("culture", culture));
+                requestContext.HttpContext.Response.Cookies.Add(
+                    new HttpCookie("culture", culture)
+                    { Path = "/", Expires = DateTime.Now.AddDays(1) }
+                    );
             }
             else
             {
