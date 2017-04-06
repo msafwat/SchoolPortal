@@ -14,13 +14,12 @@ using System.Web.Caching;
 using System.Runtime.Caching;
 using SchoolPortal.Controllers;
 using SchoolPortal.ControllersHandlers;
+using BusinessLogicLayer.Messages;
 
 namespace SchoolPortal.Areas.Questions.Controllers
 {
     public class QuestionsController : BaseController
     {
-        private SchoolPortalContext db = new SchoolPortalContext();
-
         // GET: Questions/Questions
         //public async Task<ActionResult> Index()
         //{
@@ -66,7 +65,14 @@ namespace SchoolPortal.Areas.Questions.Controllers
                 question.Text = HttpUtility.HtmlEncode(new Regex(@"script", RegexOptions.IgnoreCase).Replace(question.Text, " _script"));
 
                 //db.Questions.Add(question);
-                await db.SaveChangesAsync();
+                //await db.SaveChangesAsync();
+                
+                ResponseCodeMessage res = facade.AddQuestion(question);
+                if(res.Code == ReponseCode.SUCCESS)
+                {
+                    //res.Message
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -138,14 +144,5 @@ namespace SchoolPortal.Areas.Questions.Controllers
         //    await db.SaveChangesAsync();
         //    return RedirectToAction("Index");
         //}
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

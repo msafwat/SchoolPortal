@@ -41,7 +41,7 @@ namespace DataAccessLayer.UnitsOfWork
             throw new NotImplementedException();
         }
 
-        public void Save()
+        public async Task<int> Save()
         {
             throw new NotImplementedException();
         }

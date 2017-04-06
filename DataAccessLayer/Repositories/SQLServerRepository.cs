@@ -19,7 +19,7 @@ namespace DataAccessLayer.Repositories
             this.dbSet = db.Set<TEntity>();
         }
 
-        public virtual TEntity Insert(TEntity entity)
+        public TEntity Insert(TEntity entity)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace DataAccessLayer.Repositories
             }
             catch (Exception ex)
             {
-                // Log
+                Logger.Logger.LogException(ex);
                 return null;
             }
         }

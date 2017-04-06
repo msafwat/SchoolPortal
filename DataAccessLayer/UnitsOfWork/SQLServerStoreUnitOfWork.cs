@@ -15,7 +15,6 @@ namespace DataAccessLayer.UnitsOfWork
     {
         private SchoolDbContext context = new SchoolDbContext();
         
-
         private IRepository<Question> questionRepository;
 
         public IRepository<Question> GetQuestionRepository()
@@ -27,9 +26,9 @@ namespace DataAccessLayer.UnitsOfWork
             return questionRepository;
         }
         
-        public void Save()
+        public async Task<int> Save()
         {
-            context.SaveChanges();
+            return await context.SaveChangesAsync();
         }
 
         public int Execute(string statement, params object[] parameters)

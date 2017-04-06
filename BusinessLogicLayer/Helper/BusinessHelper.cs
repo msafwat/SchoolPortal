@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Helper
 {
-    public static class BusinessHelper
+    internal static class BusinessHelper
     {
-        public static string GetGlobalResponseMessage(ReponseCode code)
+        internal static string GetGlobalResponseMessage(ReponseCode code)
         {
             switch (code)
             {

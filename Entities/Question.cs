@@ -24,11 +24,11 @@ namespace Entities
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Validations))]
         [LocalizedDisplayName(ResourcesType.Questions, "Question")]
         //[DataType(DataType.MultilineText)]
-        [AllowHtml]
+        //[AllowHtml]
         public string Text { get; set; }
 
         [LocalizedDisplayName(ResourcesType.Questions, "Explanation")]
-        [AllowHtml]
+        //[AllowHtml]
         public string Explanation { get; set; }
 
         [Required]
