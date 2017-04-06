@@ -21,14 +21,6 @@ namespace SchoolPortal.Areas.Questions.Controllers
     {
         private SchoolPortalContext db = new SchoolPortalContext();
 
-        public bool IsArabic
-        {
-            get
-            {
-                return Session["culture"].ToString() == "ar-EG";
-            }
-        }
-
         // GET: Questions/Questions
         //public async Task<ActionResult> Index()
         //{

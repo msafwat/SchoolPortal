@@ -18,6 +18,10 @@ namespace Entities
         public long Id { get; set; }
 
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Validations))]
+        [LocalizedDisplayName(ResourcesType.Questions, "Title")]
+        public string Title { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Validations))]
         [LocalizedDisplayName(ResourcesType.Questions, "Question")]
         //[DataType(DataType.MultilineText)]
         [AllowHtml]
@@ -26,6 +30,11 @@ namespace Entities
         [LocalizedDisplayName(ResourcesType.Questions, "Explanation")]
         [AllowHtml]
         public string Explanation { get; set; }
+
+        [Required]
+        public short QuestionPrivacyId { get; set; }
+
+        public QuestionLevel QuestionPrivacy { get; set; }
 
         [Required]
         public short QuestionLevelId { get; set; }

@@ -28,5 +28,13 @@ namespace SchoolPortal.ControllersHandlers
 
             base.OnException(filterContext);
         }
+
+        public bool IsArabic
+        {
+            get
+            {
+                return Session["culture"].ToString() == "ar-EG";
+            }
+        }
     }
 }

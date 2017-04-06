@@ -57,6 +57,8 @@
     <Compile Include="Grade.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="QuestionLevel.cs" />
+    <Compile Include="QuestionPrivacy.cs" />
+    <Compile Include="QuestionPrivacyEnum.cs" />
     <Compile Include="QuestionType.cs" />
     <Compile Include="School.cs" />
     <Compile Include="SchoolCurriculum.cs" />
