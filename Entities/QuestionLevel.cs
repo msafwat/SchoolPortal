@@ -12,5 +12,6 @@ namespace Entities
 
         [Required, MaxLength(16)]
         public string NameAr { get; set; }
+
     }
 }
