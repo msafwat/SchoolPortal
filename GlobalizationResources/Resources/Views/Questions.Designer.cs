@@ -104,5 +104,14 @@ namespace GlobalizationResources.Resources.Views {
                 return ResourceManager.GetString("Question", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
     }
 }

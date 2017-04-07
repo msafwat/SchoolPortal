@@ -28,7 +28,12 @@ namespace BusinessLogicLayer.Helper
         
         public static ResponseCodeMessage GetResponse(ReponseCode code)
         {
-            return new ResponseCodeMessage() { Code = code, Message = BusinessHelper.GetGlobalResponseMessage(code) };
+            return new ResponseCodeMessage() { Code = code, Message = GetGlobalResponseMessage(code) };
+        }
+
+        public static ResponseCodeMessageListResult<T> GetResponseListResult<T>(ReponseCode code, List<T> result)
+        {
+            return new ResponseCodeMessageListResult<T>() { Code = code, Message = GetGlobalResponseMessage(code), Result = result  };
         }
     }
 }

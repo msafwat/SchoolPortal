@@ -12,6 +12,10 @@ namespace BusinessLogicLayer
 {
     public class BusinessLogicFacade
     {
+        internal ResponseCodeMessageListResult<Question> GetQuestions(int userId, int skip = 0, int take = 16)
+        {
+            return new QuestionManager().GetQuestions(userId, skip, take);
+        }
 
         public ResponseCodeMessage AddQuestion(Question question)
         {

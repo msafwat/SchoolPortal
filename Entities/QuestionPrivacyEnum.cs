@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public enum QuestionTypeEnum
+    public enum QuestionPrivacyEnum
     {
-        TRUE_FALSE = 1,
-        MULTI_CHOOSE = 2,
-        FILL_BLANK = 3,
-        ORDER = 4,
-        MATCHES = 5
+        PRIVATE = 1,
+        PUBLIC = 2,
     }
 }
