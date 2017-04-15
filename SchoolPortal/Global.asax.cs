@@ -27,8 +27,8 @@ namespace SchoolPortal
 
             var questionType = new List<QuestionType>();
             questionType.Add(new QuestionType() { Id = 0, NameEn = "Choose Question Type", NameAr="اختر نوع السؤال" });
-            questionType.Add(new QuestionType() { Id = 1, NameEn = "Multi Choose" , NameAr ="اختيار من متعدد" });
-            questionType.Add(new QuestionType() { Id = 2, NameEn = "Essay", NameAr = "مقال" });
+            questionType.Add(new QuestionType() { Id = 1, NameEn = "True/False", NameAr = "صواب-خطا" });
+            questionType.Add(new QuestionType() { Id = 2, NameEn = "Multi Choose" , NameAr ="اختيار من متعدد" });
             MemoryCache.Default.Add("QuestionTypelList", questionType, null);
 
             var questionLevel = new List<QuestionLevel>();
