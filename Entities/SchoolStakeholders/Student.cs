@@ -1,4 +1,5 @@
-﻿using Entities.SchoolStructure;
+﻿using Entities.Curriculum;
+using Entities.School;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

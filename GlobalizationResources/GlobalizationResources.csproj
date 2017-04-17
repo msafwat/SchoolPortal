@@ -57,6 +57,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Questions.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Views\Schools.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Schools.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Views\Validations.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,6 +87,11 @@
     <EmbeddedResource Include="Resources\Views\Questions.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Questions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\Schools.ar-EG.resx" />
+    <EmbeddedResource Include="Resources\Views\Schools.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Schools.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Views\Validations.ar-EG.resx" />
     <EmbeddedResource Include="Resources\Views\Validations.resx">

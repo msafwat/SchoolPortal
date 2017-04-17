@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DataAccessLayer.Repositories;
 using Entities;
 using Entities.QuestionsBank;
+using Entities.School;
 
 namespace DataAccessLayer.UnitsOfWork
 {
@@ -36,7 +37,12 @@ namespace DataAccessLayer.UnitsOfWork
         {
             throw new NotImplementedException();
         }
-        
+
+        public IRepository<School> GetSchoolRepository()
+        {
+            throw new NotImplementedException();
+        }
+
         public void RollbackTransaction()
         {
             throw new NotImplementedException();

@@ -10,6 +10,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities.School;
 
 namespace DataAccessLayer.UnitsOfWork
 {
@@ -17,8 +18,18 @@ namespace DataAccessLayer.UnitsOfWork
     {
         private SchoolDbContext context = new SchoolDbContext();
 
-        private IRepository<Student> studentRepository;
 
+        private IRepository<School> schoolRepository;
+        public IRepository<School> GetSchoolRepository()
+        {
+            if (this.studentRepository == null)
+            {
+                this.schoolRepository = new SQLServerRepository<School>(context);
+            }
+            return schoolRepository;
+        }
+
+        private IRepository<Student> studentRepository;
         public IRepository<Student> GetStudentRepository()
         {
             if (this.studentRepository == null)

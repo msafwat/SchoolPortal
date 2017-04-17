@@ -9,6 +9,7 @@ namespace GlobalizationResources
     public enum ResourcesType
     {
         BusinessReponseMessages = 1,
-        Questions = 2,
+        Schools = 2,
+        Questions = 3,
     }
 }

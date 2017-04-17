@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbContext\SchoolDbContextInitializer.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\SQLServerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

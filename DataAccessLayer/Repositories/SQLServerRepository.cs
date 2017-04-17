@@ -32,6 +32,19 @@ namespace DataAccessLayer.Repositories
             }
         }
 
+        public List<TEntity> Insert(List<TEntity> entities)
+        {
+            try
+            {
+                return dbSet.AddRange(entities).ToList();
+            }
+            catch (Exception ex)
+            {
+                Logger.Logger.LogException(ex);
+                return null;
+            }
+        }
+
         public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
         {
             IQueryable<TEntity> query = dbSet;

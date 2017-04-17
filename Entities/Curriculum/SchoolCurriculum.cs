@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.SchoolStructure
+namespace Entities.Curriculum
 {
     public class SchoolCurriculum
     {

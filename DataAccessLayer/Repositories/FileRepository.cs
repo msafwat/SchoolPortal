@@ -14,6 +14,11 @@ namespace DataAccessLayer.Repositories
             throw new NotImplementedException();
         }
 
+        public List<TEntity> Insert(List<TEntity> entities)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
         {
             throw new NotImplementedException();

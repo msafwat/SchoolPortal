@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.SchoolStructure
+namespace Entities.Curriculum
 {
     public class SchoolYear
     {
@@ -15,7 +15,7 @@ namespace Entities.SchoolStructure
 
         [Key]
         public short SchoolId { get; set; }
-        public School School { get; set; }
+        public School.School School { get; set; }
 
         public DateTime StartDate { get; set; }
 
