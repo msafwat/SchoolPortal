@@ -16,7 +16,7 @@ namespace DataAccessLayer.UnitsOfWork
 {
     internal class SQLServerStoreUnitOfWork : IUnitOfWork
     {
-        private SchoolDbContext context = new SchoolDbContext();
+        private SchoolDbContext context = new SchoolDbContext("SchoolDBContextCS");
 
 
         private IRepository<School> schoolRepository;

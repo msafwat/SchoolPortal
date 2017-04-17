@@ -13,11 +13,6 @@ namespace DataAccessLayer.DbContexts
 {
     internal class SchoolDbContext : DbContext
     {
-        internal SchoolDbContext()
-        {
-            base.Database.Connection.ConnectionString = "SchoolDBContextCS";
-        }
-
         internal SchoolDbContext(string connectionString) : base(connectionString)
         {
         }

@@ -10,7 +10,7 @@ namespace DataAccessLayer.Tests
     public class SchoolRepositoryUnitTest
     {
         [TestCase("My School 1", "مدرستي 1")]
-        public static void AddSchool(string nameEn, string nameAr)
+        public async static void AddSchool(string nameEn, string nameAr)
         {
             // ARRANGE
             School school = new School()
@@ -20,8 +20,10 @@ namespace DataAccessLayer.Tests
             };
 
             // Act
-            var schoolRepo = UnitOfWorkFactory.Create().GetSchoolRepository();
-            School schoolResult = schoolRepo.Insert(school);
+            var unit = UnitOfWorkFactory.Create();
+            var repo = unit.GetSchoolRepository();
+            School schoolResult = repo.Insert(school);
+            var x = await unit.Save();
 
             // Assert
             Assert.That(schoolResult.Id, Is.GreaterThan(0), 
