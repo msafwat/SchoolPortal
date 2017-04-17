@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace Entities.SchoolStructure
 {
-    public class Term
+    public class Year
     {
         [Key]
         public short id { get; set; }
@@ -16,5 +16,7 @@ namespace Entities
         [MaxLength(16)]
         [Index(IsUnique = true)]
         public string Name { get; set; }
+
+        public List<SchoolYear> Schools { get; set; }
     }
 }

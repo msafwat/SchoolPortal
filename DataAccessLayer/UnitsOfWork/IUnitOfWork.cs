@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Repositories;
 using Entities;
+using Entities.QuestionsBank;
 using System;
 using System.Collections.Generic;
 using System.Data;

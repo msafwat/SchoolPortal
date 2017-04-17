@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccessLayer.Repositories;
 using Entities;
+using Entities.QuestionsBank;
 
 namespace DataAccessLayer.UnitsOfWork
 {

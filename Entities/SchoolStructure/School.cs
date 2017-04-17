@@ -6,15 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace Entities.SchoolStructure
 {
-    public class Grade
+    public class School
     {
         [Key]
         public short Id { get; set; }
 
-        [MaxLength(32)]
+        [MaxLength(64)]
         [Index(IsUnique = true)]
         public string Name { get; set; }
+
+        public List<SchoolYear> Years { get; set; }
     }
 }

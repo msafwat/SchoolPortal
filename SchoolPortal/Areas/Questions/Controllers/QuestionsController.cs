@@ -15,6 +15,7 @@ using System.Runtime.Caching;
 using SchoolPortal.Controllers;
 using SchoolPortal.ControllersHandlers;
 using BusinessLogicLayer.Messages;
+using Entities.QuestionsBank;
 
 namespace SchoolPortal.Areas.Questions.Controllers
 {

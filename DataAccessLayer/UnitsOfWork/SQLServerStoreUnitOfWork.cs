@@ -1,6 +1,8 @@
 ﻿using DataAccessLayer.DbContexts;
 using DataAccessLayer.Repositories;
 using Entities;
+using Entities.QuestionsBank;
+using Entities.SchoolStakeholders;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +16,18 @@ namespace DataAccessLayer.UnitsOfWork
     internal class SQLServerStoreUnitOfWork : IUnitOfWork
     {
         private SchoolDbContext context = new SchoolDbContext();
-        
+
+        private IRepository<Student> studentRepository;
+
+        public IRepository<Student> GetStudentRepository()
+        {
+            if (this.studentRepository == null)
+            {
+                this.studentRepository = new SQLServerRepository<Student>(context);
+            }
+            return studentRepository;
+        }
+
         private IRepository<Question> questionRepository;
 
         public IRepository<Question> GetQuestionRepository()

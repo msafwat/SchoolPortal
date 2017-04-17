@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace Entities.SchoolStakeholders
 {
-    public enum QuestionPrivacyEnum
+    public class User
     {
-        PRIVATE = 1,
-        PUBLIC = 2,
     }
 }

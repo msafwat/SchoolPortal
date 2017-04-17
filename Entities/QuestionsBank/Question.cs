@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Entities
+namespace Entities.QuestionsBank
 {
     public class Question
     {

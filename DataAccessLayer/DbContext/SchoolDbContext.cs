@@ -1,4 +1,6 @@
 ﻿using Entities;
+using Entities.QuestionsBank;
+using Entities.SchoolStakeholders;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,7 +18,9 @@ namespace DataAccessLayer.DbContexts
 
         internal DbSet<Question> Questions;
 
-        internal DbSet<Answer> Students;
+        internal DbSet<Answer> Answers;
+
+        internal DbSet<Student> Students;
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -24,6 +28,7 @@ namespace DataAccessLayer.DbContexts
             modelBuilder.Entity<QuestionLevel>().ToTable("Question_Level");
             modelBuilder.Entity<Question>().ToTable("Question");
             modelBuilder.Entity<Answer>().ToTable("Answer");
+            modelBuilder.Entity<Student>().ToTable("Student");
 
             base.OnModelCreating(modelBuilder);
         }
