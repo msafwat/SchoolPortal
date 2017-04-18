@@ -15,9 +15,10 @@ namespace DataAccessLayer.DbContexts
     {
         internal SchoolDbContext(string connectionString) : base(connectionString)
         {
+            //Database.SetInitializer<SchoolDbContext>(null);
         }
 
-        internal DbSet<School> Schools;
+        internal DbSet<School> Schools { get; set; }
 
         //internal DbSet<QuestionType> QuestionTypes;
 

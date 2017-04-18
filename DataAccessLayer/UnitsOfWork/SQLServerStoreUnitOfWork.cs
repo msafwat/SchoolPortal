@@ -52,7 +52,15 @@ namespace DataAccessLayer.UnitsOfWork
         
         public async Task<int> Save()
         {
-            return await context.SaveChangesAsync();
+            try
+            {
+                return await context.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+                Logger.Logger.LogException(ex);
+                return -1;
+            }
         }
 
         public int Execute(string statement, params object[] parameters)

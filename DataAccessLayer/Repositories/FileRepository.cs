@@ -44,5 +44,9 @@ namespace DataAccessLayer.Repositories
             throw new NotImplementedException();
         }
 
+        public void Delete(Expression<Func<TEntity, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

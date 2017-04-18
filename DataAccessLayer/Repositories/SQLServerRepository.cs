@@ -94,5 +94,10 @@ namespace DataAccessLayer.Repositories
             }
             dbSet.Remove(entity);
         }
+
+        public void Delete(Expression<Func<TEntity, bool>> filter)
+        {
+            dbSet.RemoveRange(Get(filter));
+        }
     }
 }

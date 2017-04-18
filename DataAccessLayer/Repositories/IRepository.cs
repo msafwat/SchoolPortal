@@ -12,14 +12,19 @@ namespace DataAccessLayer.Repositories
 
         List<TEntity> Insert(List<TEntity> entities);
 
+
         IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "");
 
         TEntity GetByID(object id);
 
+
         void Update(TEntity entity);
+
 
         void Delete(object id);
 
         void Delete(TEntity entity);
+
+        void Delete(Expression<Func<TEntity, bool>> filter);
     }
 }
