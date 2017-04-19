@@ -56,7 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DbContext\SchoolDbContext.cs" />
     <Compile Include="Repositories\FileRepository.cs" />
-    <Compile Include="UnitsOfWork\FileStoreUnitOfWork.cs" />
+    <Compile Include="UnitsOfWork\RedisStoreUnitOfWork.cs" />
     <Compile Include="UnitsOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitsOfWork\SQLServerStoreUnitOfWork.cs" />
     <Compile Include="UnitsOfWork\UnitOfWorkStoreEnum.cs" />

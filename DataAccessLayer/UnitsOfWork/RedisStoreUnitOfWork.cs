@@ -11,14 +11,14 @@ using Entities.School;
 
 namespace DataAccessLayer.UnitsOfWork
 {
-    internal class CacheStoreUnitOfWork : IUnitOfWork
+    internal class RedisStoreUnitOfWork : IUnitOfWork
     { 
         public void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
             throw new NotImplementedException();
         }
 
-        public void CommiTransaction()
+        public void CommitTransaction()
         {
             throw new NotImplementedException();
         }

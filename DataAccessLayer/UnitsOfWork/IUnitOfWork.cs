@@ -23,7 +23,7 @@ namespace DataAccessLayer.UnitsOfWork
 
         void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted);
 
-        void CommiTransaction();
+        void CommitTransaction();
 
         void RollbackTransaction();
     }

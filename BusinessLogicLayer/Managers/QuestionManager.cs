@@ -54,7 +54,7 @@ namespace BusinessLogicLayer.Managers
                 var result = repo.Insert(question);
                 if (result != null && result.Id > 0)
                 {
-                    work.CommiTransaction();
+                    work.CommitTransaction();
                     return BusinessHelper.GetResponse(ReponseCode.SUCCESS);
                 }
                 else

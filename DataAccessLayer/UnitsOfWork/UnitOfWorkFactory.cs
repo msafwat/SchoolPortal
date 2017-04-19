@@ -14,7 +14,7 @@ namespace DataAccessLayer.UnitsOfWork
             switch (unitOfWorkStore)
             {
                 case UnitOfWorkStoreEnum.FILE:
-                    return new CacheStoreUnitOfWork(); 
+                    return new RedisStoreUnitOfWork(); 
                 default:
                     return new SQLServerStoreUnitOfWork();
             }

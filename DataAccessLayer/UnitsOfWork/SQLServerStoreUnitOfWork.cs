@@ -72,7 +72,7 @@ namespace DataAccessLayer.UnitsOfWork
             context.Database.BeginTransaction(isolationLevel);
         }
 
-        public void CommiTransaction()
+        public void CommitTransaction()
         {
             context.Database.CurrentTransaction.Commit();
         }
