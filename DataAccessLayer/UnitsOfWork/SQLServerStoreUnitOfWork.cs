@@ -21,7 +21,7 @@ namespace DataAccessLayer.UnitsOfWork
         private IRepository<School> schoolRepository;
         public IRepository<School> GetSchoolRepository()
         {
-            if (this.studentRepository == null)
+            if (this.schoolRepository == null)
             {
                 this.schoolRepository = new SQLServerRepository<School>(context);
             }

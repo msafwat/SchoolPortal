@@ -13,30 +13,27 @@ namespace DataAccessLayer.UnitsOfWork
         {
             switch (unitOfWorkStore)
             {
-                case UnitOfWorkStoreEnum.FILE:
+                case UnitOfWorkStoreEnum.MEMCACHED:
                     return new MemcachedStoreUnitOfWork(); 
                 default:
                     return new SQLServerStoreUnitOfWork();
             }
         }
 
-        private static IUnitOfWork _instance;
+        private static Dictionary<UnitOfWorkStoreEnum, IUnitOfWork> listUnitOfWorks = new Dictionary<UnitOfWorkStoreEnum, IUnitOfWork>();
         private static object syncLock = new object();
 
         public static IUnitOfWork CreateSingleton(UnitOfWorkStoreEnum unitOfWorkStore = UnitOfWorkStoreEnum.SQL_SERVER)
         {
-            if (_instance == null)
+            if (!listUnitOfWorks.ContainsKey(unitOfWorkStore))
             {
                 lock (syncLock)
                 {
-                    if (_instance == null)
-                    {
-                        _instance = Create(unitOfWorkStore);
-                    }
+                    listUnitOfWorks[unitOfWorkStore] = Create(unitOfWorkStore);
                 }
             }
 
-            return _instance;
+            return listUnitOfWorks[unitOfWorkStore];
         }
     }
 }

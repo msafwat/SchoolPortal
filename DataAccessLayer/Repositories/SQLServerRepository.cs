@@ -19,6 +19,7 @@ namespace DataAccessLayer.Repositories
             this.dbSet = db.Set<TEntity>();
         }
 
+
         public TEntity Insert(TEntity entity)
         {
             try

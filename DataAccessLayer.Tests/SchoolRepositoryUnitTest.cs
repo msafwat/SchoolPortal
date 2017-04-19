@@ -33,6 +33,10 @@ namespace DataAccessLayer.Tests
             School schoolResult = repo.Insert(school);
             var x = await unit.Save();
 
+            var u = UnitOfWorkFactory.CreateSingleton(UnitOfWorkStoreEnum.MEMCACHED);
+            var r = u.GetSchoolRepository();
+            r.Insert(schoolResult);
+
             // Assert
             Assert.That(schoolResult.Id, Is.GreaterThan(0), 
                 "Expected That School Got Id Number.");
