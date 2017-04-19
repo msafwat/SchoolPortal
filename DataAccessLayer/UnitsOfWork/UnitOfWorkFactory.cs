@@ -15,10 +15,29 @@ namespace DataAccessLayer.UnitsOfWork
             switch (unitOfWorkStore)
             {
                 case UnitOfWorkStoreEnum.FILE:
-                    return new FileStoreUnitOfWork();
+                    return new FileStoreUnitOfWork(); 
                 default:
                     return new SQLServerStoreUnitOfWork();
             }
+        }
+
+        private static IUnitOfWork _instance;
+        private static object syncLock = new object();
+
+        public static IUnitOfWork CreateSingleton()
+        {
+            if (_instance == null)
+            {
+                lock (syncLock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = Create();
+                    }
+                }
+            }
+
+            return _instance;
         }
     }
 }

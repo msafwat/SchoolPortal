@@ -13,11 +13,11 @@ namespace DataAccessLayer.Tests
     [TestFixture]
     public class SchoolRepositoryUnitTest
     {
-        [TestCase("My School 1", "مدرستي 1")]
+        [TestCase("My School 1", "مدرستي 1"), Order(1)]
         public async static void AddSchool(string nameEn, string nameAr)
         {
             // ARRANGE
-            var unit = UnitOfWorkFactory.Create();
+            var unit = UnitOfWorkFactory.CreateSingleton();
             var repo = unit.GetSchoolRepository();
 
             School school = new School()
@@ -27,22 +27,24 @@ namespace DataAccessLayer.Tests
             };
 
             // Act
+            unit.BeginTransaction();
             repo.Delete(s => s.NameEn == nameEn && s.NameAr == s.NameAr);
             School schoolResult = repo.Insert(school);
             var x = await unit.Save();
+            unit.CommiTransaction();
 
             // Assert
             Assert.That(schoolResult.Id, Is.GreaterThan(0), 
                 "Expected That School Got Id Number.");
         }
 
-        [TestCase("My School 1", "مدرستي 1")]
+        [TestCase("My School 1", "مدرستي 1"), Order(2)]
         public static void GetSchool(string nameEn, string nameAr)
         {
             // ARRANGE
 
             // Act
-            var unit = UnitOfWorkFactory.Create();
+            var unit = UnitOfWorkFactory.CreateSingleton();
             var repo = unit.GetSchoolRepository();
             var result = repo.Get(s=>s.NameEn == nameEn && s.NameAr == s.NameAr);
 
@@ -51,6 +53,16 @@ namespace DataAccessLayer.Tests
                 "Expected That To Find The School.");
             Assert.That(result.Count(), Is.EqualTo(1),
                 "Expected That To Find The School.");
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            if (TestContext.CurrentContext.Result.FailCount > 0)
+            {
+                var unit = UnitOfWorkFactory.CreateSingleton();
+                unit.RollbackTransaction();
+            }
         }
     }
 }

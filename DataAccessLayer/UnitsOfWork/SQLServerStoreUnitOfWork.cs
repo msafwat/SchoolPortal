@@ -18,7 +18,6 @@ namespace DataAccessLayer.UnitsOfWork
     {
         private SchoolDbContext context = new SchoolDbContext("SchoolDBContextCS");
 
-
         private IRepository<School> schoolRepository;
         public IRepository<School> GetSchoolRepository()
         {

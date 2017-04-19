@@ -12,13 +12,18 @@ using Entities.School;
 namespace DataAccessLayer.UnitsOfWork
 {
     internal class FileStoreUnitOfWork : IUnitOfWork
-    {
+    { 
         public void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
             throw new NotImplementedException();
         }
 
         public void CommiTransaction()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IUnitOfWork CreateSingleton()
         {
             throw new NotImplementedException();
         }
