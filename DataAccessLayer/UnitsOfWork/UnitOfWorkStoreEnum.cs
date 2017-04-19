@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.UnitsOfWork
 {
-    internal enum UnitOfWorkStoreEnum
+    public enum UnitOfWorkStoreEnum
     {
         SQL_SERVER = 1,
         FILE = 2,

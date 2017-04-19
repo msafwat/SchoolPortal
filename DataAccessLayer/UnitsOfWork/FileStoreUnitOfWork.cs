@@ -11,7 +11,7 @@ using Entities.School;
 
 namespace DataAccessLayer.UnitsOfWork
 {
-    internal class FileStoreUnitOfWork : IUnitOfWork
+    internal class CacheStoreUnitOfWork : IUnitOfWork
     { 
         public void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {

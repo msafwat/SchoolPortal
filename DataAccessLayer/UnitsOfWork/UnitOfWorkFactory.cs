@@ -9,13 +9,12 @@ namespace DataAccessLayer.UnitsOfWork
 {
     public static class UnitOfWorkFactory
     {
-        public static IUnitOfWork Create()
+        public static IUnitOfWork Create(UnitOfWorkStoreEnum unitOfWorkStore = UnitOfWorkStoreEnum.SQL_SERVER)
         {
-            UnitOfWorkStoreEnum unitOfWorkStore = (UnitOfWorkStoreEnum)Convert.ToInt32(ConfigurationManager.AppSettings["StoreMode"]);
             switch (unitOfWorkStore)
             {
                 case UnitOfWorkStoreEnum.FILE:
-                    return new FileStoreUnitOfWork(); 
+                    return new CacheStoreUnitOfWork(); 
                 default:
                     return new SQLServerStoreUnitOfWork();
             }
@@ -24,7 +23,7 @@ namespace DataAccessLayer.UnitsOfWork
         private static IUnitOfWork _instance;
         private static object syncLock = new object();
 
-        public static IUnitOfWork CreateSingleton()
+        public static IUnitOfWork CreateSingleton(UnitOfWorkStoreEnum unitOfWorkStore = UnitOfWorkStoreEnum.SQL_SERVER)
         {
             if (_instance == null)
             {
@@ -32,7 +31,7 @@ namespace DataAccessLayer.UnitsOfWork
                 {
                     if (_instance == null)
                     {
-                        _instance = Create();
+                        _instance = Create(unitOfWorkStore);
                     }
                 }
             }
