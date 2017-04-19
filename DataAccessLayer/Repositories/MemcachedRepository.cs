@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repositories
 {
-    internal class RedisRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    internal class MemcachedRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         public TEntity Insert(TEntity entity)
         {

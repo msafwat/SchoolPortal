@@ -11,7 +11,7 @@ using Entities.School;
 
 namespace DataAccessLayer.UnitsOfWork
 {
-    internal class RedisStoreUnitOfWork : IUnitOfWork
+    internal class MemcachedStoreUnitOfWork : IUnitOfWork
     { 
         public void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
