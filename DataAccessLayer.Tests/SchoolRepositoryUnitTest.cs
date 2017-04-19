@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace DataAccessLayer.Tests
 {
@@ -14,7 +15,7 @@ namespace DataAccessLayer.Tests
     public class SchoolRepositoryUnitTest
     {
         [TestCase("My School 1", "مدرستي 1"), Order(1)]
-        public async static void AddSchool(string nameEn, string nameAr)
+        public async static Task AddSchool(string nameEn, string nameAr)
         {
             // ARRANGE
             var unit = UnitOfWorkFactory.CreateSingleton();
@@ -31,7 +32,6 @@ namespace DataAccessLayer.Tests
             repo.Delete(s => s.NameEn == nameEn && s.NameAr == s.NameAr);
             School schoolResult = repo.Insert(school);
             var x = await unit.Save();
-            unit.CommiTransaction();
 
             // Assert
             Assert.That(schoolResult.Id, Is.GreaterThan(0), 
