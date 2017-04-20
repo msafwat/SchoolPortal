@@ -1,21 +1,24 @@
-﻿using ServiceStack.Caching.Memcached;
+﻿
+using ServiceStack.Redis;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace DataAccessLayer.Repositories
 {
-    internal class MemcachedRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    internal class RedisRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private MemcachedClientCache memcached;
+        private IRedisTransaction trans;
 
-        public MemcachedRepository(MemcachedClientCache memcached)
+        public RedisRepository(IRedisTransaction trans)
         {
-            this.memcached = memcached;
+            this.trans = trans;
         }
 
 
@@ -23,15 +26,16 @@ namespace DataAccessLayer.Repositories
         {
             try
             {
-                var result = memcached.Add<TEntity>("3", entity) ? entity : null;
-                return result;
+                trans.QueueCommand(c => c.AddItemToList("zc", new JavaScriptSerializer().Serialize(entity)));
+
+                    return entity;
             }
             catch (Exception ex)
             {
                 Logger.Logger.LogException(ex);
                 return null;
             }
-        }
+}
 
         public List<TEntity> Insert(List<TEntity> entities)
         {

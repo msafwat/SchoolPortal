@@ -8,18 +8,22 @@ using DataAccessLayer.Repositories;
 using Entities;
 using Entities.QuestionsBank;
 using Entities.School;
-using ServiceStack.Caching.Memcached;
 using System.Net;
+using ServiceStack.Redis;
 
 namespace DataAccessLayer.UnitsOfWork
 {
-    internal class MemcachedStoreUnitOfWork : IUnitOfWork
+    internal class RedisStoreUnitOfWork : IUnitOfWork
     {
-        private MemcachedClientCache memcached;
+        private RedisManagerPool redisManager;
+        private IRedisClient redis;
+        private IRedisTransaction trans;
 
-        internal MemcachedStoreUnitOfWork()
+        internal RedisStoreUnitOfWork()
         {
-            memcached = new MemcachedClientCache(new List<IPEndPoint>() { new IPEndPoint(new IPAddress(new byte[] { 127,0,0,1 }), 11211) });
+            redisManager = new RedisManagerPool("localhost:6379");
+            redis = redisManager.GetClient();
+            trans = redis.CreateTransaction();
         }
 
         private IRepository<School> schoolRepository;
@@ -27,7 +31,7 @@ namespace DataAccessLayer.UnitsOfWork
         {
             if (this.schoolRepository == null)
             {
-                this.schoolRepository = new MemcachedRepository<School>(memcached);
+                this.schoolRepository = new RedisRepository<School>(trans);
             }
             return schoolRepository;
         }
@@ -39,25 +43,20 @@ namespace DataAccessLayer.UnitsOfWork
 
         public void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
-            throw new NotImplementedException();
+            trans = redis.CreateTransaction();
         }
 
         public void CommitTransaction()
         {
-            throw new NotImplementedException();
+            trans.Commit();
         }
-
-        public IUnitOfWork CreateSingleton()
+        
+        public void RollbackTransaction()
         {
-            throw new NotImplementedException();
+            trans.Dispose();
         }
 
         public int Execute(string statement, params object[] parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RollbackTransaction()
         {
             throw new NotImplementedException();
         }
@@ -75,7 +74,7 @@ namespace DataAccessLayer.UnitsOfWork
             {
                 if (disposing)
                 {
-                    memcached.Dispose();
+                    trans.Dispose();
                 }
             }
             this.disposed = true;

@@ -14,7 +14,7 @@ namespace DataAccessLayer.UnitsOfWork
             switch (unitOfWorkStore)
             {
                 case UnitOfWorkStoreEnum.MEMCACHED:
-                    return new MemcachedStoreUnitOfWork(); 
+                    return new RedisStoreUnitOfWork(); 
                 default:
                     return new SQLServerStoreUnitOfWork();
             }
