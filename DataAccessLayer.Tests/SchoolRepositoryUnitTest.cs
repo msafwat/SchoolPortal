@@ -21,6 +21,9 @@ namespace DataAccessLayer.Tests
             var unit = UnitOfWorkFactory.CreateSingleton();
             var repo = unit.GetSchoolRepository();
 
+            var unitCache = UnitOfWorkFactory.CreateSingleton(UnitOfWorkStoreEnum.MEMCACHED);
+            var repoCache = unitCache.GetSchoolRepository();
+
             School school = new School()
             {
                 NameEn = nameEn,
@@ -33,9 +36,11 @@ namespace DataAccessLayer.Tests
             School schoolResult = repo.Insert(school);
             var x = await unit.Save();
 
-            var u = UnitOfWorkFactory.CreateSingleton(UnitOfWorkStoreEnum.MEMCACHED);
-            var r = u.GetSchoolRepository();
-            r.Insert(schoolResult);
+            //unitCache.BeginTransaction();
+            repoCache.Insert(schoolResult);
+            unitCache.CommitTransaction();
+            var result = repoCache.Get();
+
 
             // Assert
             Assert.That(schoolResult.Id, Is.GreaterThan(0), 

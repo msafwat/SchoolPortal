@@ -31,7 +31,7 @@ namespace DataAccessLayer.UnitsOfWork
         {
             if (this.schoolRepository == null)
             {
-                this.schoolRepository = new RedisRepository<School>(trans);
+                this.schoolRepository = new RedisRepository<School>(redis, trans);
             }
             return schoolRepository;
         }
