@@ -46,7 +46,7 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        public virtual IEnumerable<TEntity> Get(Func<TEntity, bool> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
+        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "", List<TEntity> resultReferance = null)
         {
             IQueryable<TEntity> query = dbSet;
 
@@ -54,12 +54,10 @@ namespace DataAccessLayer.Repositories
             {
                 query = query.Include(includeProperty);
             }
-
-            IEnumerable<TEntity> result = null;
-
+            
             if (filter != null)
             {
-                result = query.Where(filter);
+                query = query.Where(filter);
             }
 
             if (orderBy != null)
@@ -68,7 +66,7 @@ namespace DataAccessLayer.Repositories
             }
             else
             {
-                return result;
+                return query.ToList();
             }
         }
 
@@ -98,9 +96,9 @@ namespace DataAccessLayer.Repositories
             dbSet.Remove(entity);
         }
 
-        public void Delete(Expression<Func<TEntity, bool>> filter)
+        public void Delete(Expression<Func<TEntity, bool>> filter = null)
         {
-            dbSet.RemoveRange(Get(filter));
+            // dbSet.RemoveRange(Get(filter));
         }
     }
 }

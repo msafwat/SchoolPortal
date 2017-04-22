@@ -36,11 +36,8 @@ namespace DataAccessLayer.Tests
             School schoolResult = repo.Insert(school);
             var x = await unit.Save();
 
-            //unitCache.BeginTransaction();
+            repoCache.Delete();
             repoCache.Insert(schoolResult);
-            unitCache.CommitTransaction();
-            var result = repoCache.Get();
-
 
             // Assert
             Assert.That(schoolResult.Id, Is.GreaterThan(0), 
@@ -51,17 +48,27 @@ namespace DataAccessLayer.Tests
         public static void GetSchool(string nameEn, string nameAr)
         {
             // ARRANGE
-
-            // Act
             var unit = UnitOfWorkFactory.CreateSingleton();
             var repo = unit.GetSchoolRepository();
+
+            var unitCache = UnitOfWorkFactory.CreateSingleton(UnitOfWorkStoreEnum.MEMCACHED);
+            var repoCache = unitCache.GetSchoolRepository();
+
+            // Act
             var result = repo.Get(s=>s.NameEn == nameEn && s.NameAr == s.NameAr);
+
+            List<School> cacheResult = new List<School>();
+            repoCache.Get(null, null, null, cacheResult);
+            unitCache.CommitTransaction();
+            unitCache.Dispose();
 
             // Assert
             Assert.That(result, Is.Not.Null,
                 "Expected That To Find The School.");
             Assert.That(result.Count(), Is.EqualTo(1),
                 "Expected That To Find The School.");
+            Assert.That(cacheResult.Count(), Is.GreaterThan(1),
+                "Expected That To Find The School In Cache.");
         }
 
         [TearDown]
@@ -71,6 +78,8 @@ namespace DataAccessLayer.Tests
             {
                 var unit = UnitOfWorkFactory.CreateSingleton();
                 unit.RollbackTransaction();
+                var unitCache = UnitOfWorkFactory.CreateSingleton(UnitOfWorkStoreEnum.MEMCACHED);
+                unitCache.RollbackTransaction();
             }
         }
     }

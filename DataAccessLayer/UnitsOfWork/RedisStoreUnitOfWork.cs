@@ -21,7 +21,7 @@ namespace DataAccessLayer.UnitsOfWork
 
         internal RedisStoreUnitOfWork()
         {
-            redisManager = new RedisManagerPool("localhost:6379");
+            redisManager = new RedisManagerPool("127.0.0.1:6379");
             redis = redisManager.GetClient();
             trans = redis.CreateTransaction();
         }
@@ -43,7 +43,8 @@ namespace DataAccessLayer.UnitsOfWork
 
         public void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
-            trans = redis.CreateTransaction();
+            if(trans == null)
+                trans = redis.CreateTransaction();
         }
 
         public void CommitTransaction()

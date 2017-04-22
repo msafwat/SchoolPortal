@@ -28,18 +28,7 @@ namespace DataAccessLayer.Repositories
         {
             try
             {
-                var l = redis.As<TEntity>();
-                var xxxx = l.Store(entity);
-                
-
-                var tt = redis.GetAllKeys();
-                long xa = -3;
-                trans.QueueCommand(c => c.AddItemToList(entity.GetType().Name, "asa")); //new JavaScriptSerializer().Serialize(entity)));
-
-
-                List<string> list = null;
-                trans.QueueCommand(c => c.GetAllKeys(), r => list = r);
-
+                trans.QueueCommand(c => c.AddItemToList(entity.GetType().Name, new JavaScriptSerializer().Serialize(entity)));
                 return entity;
             }
             catch (Exception ex)
@@ -54,24 +43,23 @@ namespace DataAccessLayer.Repositories
             trans.QueueCommand(c => c.AddRangeToList(entities[0].GetType().Name, entities.Select(e => new JavaScriptSerializer().Serialize(e)).ToList()));
             return entities;
         }
-
-
-        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
+        
+        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "", List<TEntity> resultReferance = null)
         {
-            List<string> list = null;
-            trans.QueueCommand(c => c.GetAllItemsFromList(typeof(TEntity).Name), r => list = r);
+            if(resultReferance == null) resultReferance = new List<TEntity>();
 
-            if (list == null) return null;
+            trans.QueueCommand(c => c.GetAllItemsFromList(typeof(TEntity).Name), 
+                r =>
+                {
+                    if (r == null) resultReferance = null;
+                    var temp = r.Select(x => new JavaScriptSerializer().Deserialize<TEntity>(x));  
+                    if (filter != null) temp = temp.Where(filter.Compile());
+                    if (orderBy != null) temp = orderBy.Invoke(temp.AsQueryable()).ToList();
+                    foreach (var t in temp) resultReferance.Add(t);
+                }
+                );
 
-            IEnumerable<TEntity> result = list.Select(x => new JavaScriptSerializer().Deserialize<TEntity>(x));
-
-            if(filter != null)
-                result = result.Where(filter.Compile());
-
-            if(orderBy != null)
-                return orderBy.Invoke(result.AsQueryable()).ToList();
-
-            return result.ToList();
+            return resultReferance;
         }
 
         public TEntity GetByID(object id)
@@ -96,9 +84,9 @@ namespace DataAccessLayer.Repositories
             throw new NotImplementedException();
         }
 
-        public void Delete(Expression<Func<TEntity, bool>> filter)
+        public void Delete(Expression<Func<TEntity, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            trans.QueueCommand(c => c.RemoveAllFromList(typeof(TEntity).Name));
         }
     }
 }
