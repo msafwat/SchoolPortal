@@ -67,7 +67,7 @@ namespace DataAccessLayer.Tests
                 "Expected That To Find The School.");
             Assert.That(result.Count(), Is.EqualTo(1),
                 "Expected That To Find The School.");
-            Assert.That(cacheResult.Count(), Is.GreaterThan(1),
+            Assert.That(cacheResult.Count(), Is.GreaterThan(0),
                 "Expected That To Find The School In Cache.");
         }
 
