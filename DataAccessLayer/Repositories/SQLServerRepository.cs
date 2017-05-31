@@ -19,6 +19,7 @@ namespace DataAccessLayer.Repositories
             this.dbSet = db.Set<TEntity>();
         }
 
+
         public TEntity Insert(TEntity entity)
         {
             try
@@ -32,18 +33,31 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
+        public List<TEntity> Insert(List<TEntity> entities)
+        {
+            try
+            {
+                return dbSet.AddRange(entities).ToList();
+            }
+            catch (Exception ex)
+            {
+                Logger.Logger.LogException(ex);
+                return null;
+            }
+        }
+
+        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "", List<TEntity> resultReferance = null)
         {
             IQueryable<TEntity> query = dbSet;
-
-            if (filter != null)
-            {
-                query = query.Where(filter);
-            }
 
             foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 query = query.Include(includeProperty);
+            }
+            
+            if (filter != null)
+            {
+                query = query.Where(filter);
             }
 
             if (orderBy != null)
@@ -80,6 +94,11 @@ namespace DataAccessLayer.Repositories
                 dbSet.Attach(entity);
             }
             dbSet.Remove(entity);
+        }
+
+        public void Delete(Expression<Func<TEntity, bool>> filter = null)
+        {
+            // dbSet.RemoveRange(Get(filter));
         }
     }
 }

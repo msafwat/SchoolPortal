@@ -1,4 +1,7 @@
 ﻿using Entities;
+using Entities.QuestionsBank;
+using Entities.School;
+using Entities.SchoolStakeholders;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,20 +13,32 @@ namespace DataAccessLayer.DbContexts
 {
     internal class SchoolDbContext : DbContext
     {
-        internal DbSet<QuestionType> QuestionTypes;
+        internal SchoolDbContext(string connectionString) : base(connectionString)
+        {
+            //Database.SetInitializer<SchoolDbContext>(null);
+        }
 
-        internal DbSet<QuestionLevel> QuestionLevels;
+        internal DbSet<School> Schools { get; set; }
 
-        internal DbSet<Question> Questions;
+        //internal DbSet<QuestionType> QuestionTypes;
 
-        internal DbSet<Answer> Students;
+        //internal DbSet<QuestionLevel> QuestionLevels;
+
+        //internal DbSet<Question> Questions;
+
+        //internal DbSet<Answer> Answers;
+
+        //internal DbSet<Student> Students;
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<QuestionType>().ToTable("Question_Type");
-            modelBuilder.Entity<QuestionLevel>().ToTable("Question_Level");
-            modelBuilder.Entity<Question>().ToTable("Question");
-            modelBuilder.Entity<Answer>().ToTable("Answer");
+            modelBuilder.Entity<School>().ToTable("School");
+
+            //modelBuilder.Entity<QuestionType>().ToTable("Question_Type");
+            //modelBuilder.Entity<QuestionLevel>().ToTable("Question_Level");
+            //modelBuilder.Entity<Question>().ToTable("Question");
+            //modelBuilder.Entity<Answer>().ToTable("Answer");
+            //modelBuilder.Entity<Student>().ToTable("Student");
 
             base.OnModelCreating(modelBuilder);
         }

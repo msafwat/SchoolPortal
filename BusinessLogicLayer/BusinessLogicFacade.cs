@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.Managers;
 using BusinessLogicLayer.Messages;
 using Entities;
+using Entities.QuestionsBank;
 using GlobalizationResources;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,10 @@ namespace BusinessLogicLayer
 {
     public class BusinessLogicFacade
     {
+        internal ResponseCodeMessageListResult<Question> GetQuestions(int userId, int skip = 0, int take = 16)
+        {
+            return new QuestionManager().GetQuestions(userId, skip, take);
+        }
 
         public ResponseCodeMessage AddQuestion(Question question)
         {

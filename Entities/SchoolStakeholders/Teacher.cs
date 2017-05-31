@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.UnitsOfWork
+namespace Entities.SchoolStakeholders
 {
-    public enum UnitOfWorkStoreEnum
+    public class Teacher : User
     {
-        SQL_SERVER = 1,
-        MEMCACHED = 2,
     }
 }

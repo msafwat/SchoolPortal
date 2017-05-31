@@ -27,7 +27,12 @@ namespace GlobalizationResources
             switch (resourceType)
             {
                 case ResourcesType.BusinessReponseMessages:
-                    return new ResourceManager("GlobalizationResources.Resources.BusinessResponse.BusinessReponseMessages", Assembly.GetExecutingAssembly()).GetString(resourceName);
+                    return new ResourceManager(
+                        "GlobalizationResources.Resources.BusinessResponse.BusinessReponseMessages", 
+                        Assembly.GetExecutingAssembly())
+                        .GetString(resourceName);
+                case ResourcesType.Schools:
+                    return new ResourceManager(typeof(Schools)).GetString(resourceName);
                 case ResourcesType.Questions:
                     return new ResourceManager(typeof(Questions)).GetString(resourceName);
                 default:

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace Entities.Curriculum
 {
     public class CurriculumGrade
     {
@@ -15,6 +15,6 @@ namespace Entities
 
         [Key]
         public short GradeId { get; set; }
-        public School Grade { get; set; }
+        public School.School Grade { get; set; }
     }
 }

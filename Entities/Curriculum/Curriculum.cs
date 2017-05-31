@@ -6,15 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace Entities.Curriculum
 {
-    public class Grade
+    public class Curriculum
     {
         [Key]
-        public short Id { get; set; }
+        public short id { get; set; }
 
         [MaxLength(32)]
         [Index(IsUnique = true)]
         public string Name { get; set; }
+
     }
 }

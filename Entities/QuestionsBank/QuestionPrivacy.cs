@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Entities
+namespace Entities.QuestionsBank
 {
-    public class QuestionLevel
+    public class QuestionPrivacy
     {
         [Key]
         public short Id { get; set; }
@@ -12,6 +12,5 @@ namespace Entities
 
         [Required, MaxLength(16)]
         public string NameAr { get; set; }
-
     }
 }

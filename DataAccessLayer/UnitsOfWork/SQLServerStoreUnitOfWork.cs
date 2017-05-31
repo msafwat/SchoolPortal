@@ -1,6 +1,8 @@
 ﻿using DataAccessLayer.DbContexts;
 using DataAccessLayer.Repositories;
 using Entities;
+using Entities.QuestionsBank;
+using Entities.SchoolStakeholders;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,13 +10,34 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities.School;
 
 namespace DataAccessLayer.UnitsOfWork
 {
     internal class SQLServerStoreUnitOfWork : IUnitOfWork
     {
-        private SchoolDbContext context = new SchoolDbContext();
-        
+        private SchoolDbContext context = new SchoolDbContext("SchoolDBContextCS");
+
+        private IRepository<School> schoolRepository;
+        public IRepository<School> GetSchoolRepository()
+        {
+            if (this.schoolRepository == null)
+            {
+                this.schoolRepository = new SQLServerRepository<School>(context);
+            }
+            return schoolRepository;
+        }
+
+        private IRepository<Student> studentRepository;
+        public IRepository<Student> GetStudentRepository()
+        {
+            if (this.studentRepository == null)
+            {
+                this.studentRepository = new SQLServerRepository<Student>(context);
+            }
+            return studentRepository;
+        }
+
         private IRepository<Question> questionRepository;
 
         public IRepository<Question> GetQuestionRepository()
@@ -28,7 +51,15 @@ namespace DataAccessLayer.UnitsOfWork
         
         public async Task<int> Save()
         {
-            return await context.SaveChangesAsync();
+            try
+            {
+                return await context.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+                Logger.Logger.LogException(ex);
+                return -1;
+            }
         }
 
         public int Execute(string statement, params object[] parameters)
@@ -41,7 +72,7 @@ namespace DataAccessLayer.UnitsOfWork
             context.Database.BeginTransaction(isolationLevel);
         }
 
-        public void CommiTransaction()
+        public void CommitTransaction()
         {
             context.Database.CurrentTransaction.Commit();
         }

@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.UnitsOfWork
+namespace Entities.QuestionsBank
 {
-    public enum UnitOfWorkStoreEnum
+    public enum QuestionLevelEnum
     {
-        SQL_SERVER = 1,
-        MEMCACHED = 2,
+        EASY,
+        MEDIUM,
+        HARD
     }
 }

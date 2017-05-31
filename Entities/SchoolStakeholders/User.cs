@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace Entities.SchoolStakeholders
 {
-    public enum QuestionTypeEnum
+    public class User
     {
-        MULTI_CHOOSE = 1,
     }
 }

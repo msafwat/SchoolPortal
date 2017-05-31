@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.QuestionsBank;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -19,6 +20,6 @@ namespace SchoolPortal.Models
         {
         }
 
-        public System.Data.Entity.DbSet<Entities.QuestionType> QuestionTypes { get; set; }
+        public System.Data.Entity.DbSet<QuestionType> QuestionTypes { get; set; }
     }
 }

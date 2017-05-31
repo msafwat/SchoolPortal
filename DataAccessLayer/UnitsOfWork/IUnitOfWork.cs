@@ -1,5 +1,7 @@
 ﻿using DataAccessLayer.Repositories;
 using Entities;
+using Entities.QuestionsBank;
+using Entities.School;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,6 +13,8 @@ namespace DataAccessLayer.UnitsOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
+        IRepository<School> GetSchoolRepository();
+
         IRepository<Question> GetQuestionRepository();
 
         Task<int> Save();
@@ -19,7 +23,7 @@ namespace DataAccessLayer.UnitsOfWork
 
         void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted);
 
-        void CommiTransaction();
+        void CommitTransaction();
 
         void RollbackTransaction();
     }

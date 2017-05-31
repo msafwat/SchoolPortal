@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Entities
+namespace Entities.QuestionsBank
 {
     public class Question
     {
@@ -48,6 +48,18 @@ namespace Entities
         public QuestionType QuestionType { get; set; }
 
         [Required]
+        public short QuestionPrivacyId { get; set; }
+
+        [Required]
+        public QuestionPrivacy QuestionPrivacy { get; set; }
+
+        [Required]
         public List<Answer> Answers { get; set; }
+
+        [Required]
+        public int UserId { get; set; }
+
+        [Required]
+        public DateTime LastModifiedDateTime { get; set; }
     }
 }

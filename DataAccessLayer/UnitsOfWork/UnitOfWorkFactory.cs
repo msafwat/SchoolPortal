@@ -9,16 +9,31 @@ namespace DataAccessLayer.UnitsOfWork
 {
     public static class UnitOfWorkFactory
     {
-        public static IUnitOfWork Create()
+        public static IUnitOfWork Create(UnitOfWorkStoreEnum unitOfWorkStore = UnitOfWorkStoreEnum.SQL_SERVER)
         {
-            UnitOfWorkStoreEnum unitOfWorkStore = (UnitOfWorkStoreEnum)Convert.ToInt32(ConfigurationManager.AppSettings["StoreMode"]);
             switch (unitOfWorkStore)
             {
-                case UnitOfWorkStoreEnum.FILE:
-                    return new FileStoreUnitOfWork();
+                case UnitOfWorkStoreEnum.MEMCACHED:
+                    return new RedisStoreUnitOfWork(); 
                 default:
                     return new SQLServerStoreUnitOfWork();
             }
+        }
+
+        private static Dictionary<UnitOfWorkStoreEnum, IUnitOfWork> listUnitOfWorks = new Dictionary<UnitOfWorkStoreEnum, IUnitOfWork>();
+        private static object syncLock = new object();
+
+        public static IUnitOfWork CreateSingleton(UnitOfWorkStoreEnum unitOfWorkStore = UnitOfWorkStoreEnum.SQL_SERVER)
+        {
+            if (!listUnitOfWorks.ContainsKey(unitOfWorkStore))
+            {
+                lock (syncLock)
+                {
+                    listUnitOfWorks[unitOfWorkStore] = Create(unitOfWorkStore);
+                }
+            }
+
+            return listUnitOfWorks[unitOfWorkStore];
         }
     }
 }

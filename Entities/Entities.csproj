@@ -77,25 +77,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Answer.cs" />
-    <Compile Include="Curriculum.cs" />
-    <Compile Include="CurriculumGrade.cs" />
+    <Compile Include="QuestionsBank\Answer.cs" />
+    <Compile Include="SchoolStakeholders\Admin.cs" />
+    <Compile Include="SchoolStakeholders\User.cs" />
+    <Compile Include="Curriculum\Curriculum.cs" />
+    <Compile Include="Curriculum\CurriculumGrade.cs" />
     <Compile Include="CustomAttributes\LocalizedDisplayName.cs" />
-    <Compile Include="Grade.cs" />
-    <Compile Include="Question.cs" />
-    <Compile Include="QuestionLevel.cs" />
-    <Compile Include="QuestionPrivacy.cs" />
-    <Compile Include="QuestionPrivacyEnum.cs" />
-    <Compile Include="QuestionType.cs" />
-    <Compile Include="QuestionTypeEnum.cs" />
-    <Compile Include="School.cs" />
-    <Compile Include="SchoolCurriculum.cs" />
-    <Compile Include="SchoolCurriculumStudent.cs" />
-    <Compile Include="SchoolYear.cs" />
-    <Compile Include="Student.cs" />
+    <Compile Include="Exam\Exam.cs" />
+    <Compile Include="Curriculum\Grade.cs" />
+    <Compile Include="QuestionsBank\Question.cs" />
+    <Compile Include="QuestionsBank\QuestionLevel.cs" />
+    <Compile Include="QuestionsBank\QuestionLevelEnum.cs" />
+    <Compile Include="QuestionsBank\QuestionPrivacy.cs" />
+    <Compile Include="QuestionsBank\QuestionPrivacyEnum.cs" />
+    <Compile Include="QuestionsBank\QuestionType.cs" />
+    <Compile Include="QuestionsBank\QuestionTypeEnum.cs" />
+    <Compile Include="School\School.cs" />
+    <Compile Include="Curriculum\SchoolCurriculum.cs" />
+    <Compile Include="Curriculum\SchoolCurriculumStudent.cs" />
+    <Compile Include="SchoolStakeholders\Parent.cs" />
+    <Compile Include="SchoolStakeholders\Teacher.cs" />
+    <Compile Include="Curriculum\SchoolYear.cs" />
+    <Compile Include="SchoolStakeholders\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Term.cs" />
-    <Compile Include="Year.cs" />
+    <Compile Include="Curriculum\Term.cs" />
+    <Compile Include="Curriculum\Year.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
