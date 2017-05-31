@@ -15,7 +15,7 @@ namespace SchoolPortal.ControllersHandlers
 
         protected override void OnException(ExceptionContext filterContext)
         {
-            Logger.Logger.LogException(filterContext.Exception);
+            SystemLogger.SystemLogger.LogException(filterContext.Exception);
 
             //if (filterContext.HttpContext.IsCustomErrorEnabled)
             //{

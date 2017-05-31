@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logger
+namespace SystemLogger
 {
-    public static class Logger
+    public static class SystemLogger
     {
         public static NLog.Logger logger = LogManager.GetCurrentClassLogger();
 

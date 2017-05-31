@@ -70,9 +70,9 @@
       <Project>{2e93fb8a-fedf-4493-a425-402f6df84654}</Project>
       <Name>Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Logger\Logger.csproj">
+    <ProjectReference Include="..\Logger\SystemLogger.csproj">
       <Project>{6ce523ef-aa01-449f-94a5-b1a6726c10a5}</Project>
-      <Name>Logger</Name>
+      <Name>SystemLogger</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

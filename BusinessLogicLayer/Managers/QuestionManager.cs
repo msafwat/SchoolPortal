@@ -37,7 +37,7 @@ namespace BusinessLogicLayer.Managers
             }
             catch (Exception ex)
             {
-                Logger.Logger.LogException(ex);
+                SystemLogger.SystemLogger.LogException(ex);
                 return BusinessHelper.GetResponse(ReponseCode.GENERAL_ERROR);
             }
         }
