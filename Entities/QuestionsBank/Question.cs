@@ -32,11 +32,6 @@ namespace Entities.QuestionsBank
         public string Explanation { get; set; }
 
         [Required]
-        public short QuestionPrivacyId { get; set; }
-
-        public QuestionLevel QuestionPrivacy { get; set; }
-
-        [Required]
         public short QuestionLevelId { get; set; }
 
         public QuestionLevel QuestionLevel { get; set; }

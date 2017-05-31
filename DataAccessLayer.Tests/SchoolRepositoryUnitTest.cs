@@ -21,7 +21,7 @@ namespace DataAccessLayer.Tests
             var unit = UnitOfWorkFactory.CreateSingleton();
             var repo = unit.GetSchoolRepository();
 
-            var unitCache = UnitOfWorkFactory.CreateSingleton(UnitOfWorkStoreEnum.MEMCACHED);
+            var unitCache = UnitOfWorkFactory.CreateSingleton(UnitOfWorkStoreEnum.REDIS);
             var repoCache = unitCache.GetSchoolRepository();
 
             School school = new School()
@@ -51,7 +51,7 @@ namespace DataAccessLayer.Tests
             var unit = UnitOfWorkFactory.CreateSingleton();
             var repo = unit.GetSchoolRepository();
 
-            var unitCache = UnitOfWorkFactory.CreateSingleton(UnitOfWorkStoreEnum.MEMCACHED);
+            var unitCache = UnitOfWorkFactory.CreateSingleton(UnitOfWorkStoreEnum.REDIS);
             var repoCache = unitCache.GetSchoolRepository();
 
             // Act
@@ -78,7 +78,7 @@ namespace DataAccessLayer.Tests
             {
                 var unit = UnitOfWorkFactory.CreateSingleton();
                 unit.RollbackTransaction();
-                var unitCache = UnitOfWorkFactory.CreateSingleton(UnitOfWorkStoreEnum.MEMCACHED);
+                var unitCache = UnitOfWorkFactory.CreateSingleton(UnitOfWorkStoreEnum.REDIS);
                 unitCache.RollbackTransaction();
             }
         }

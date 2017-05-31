@@ -9,6 +9,6 @@ namespace DataAccessLayer.UnitsOfWork
     public enum UnitOfWorkStoreEnum
     {
         SQL_SERVER = 1,
-        MEMCACHED = 2,
+        REDIS = 2,
     }
 }

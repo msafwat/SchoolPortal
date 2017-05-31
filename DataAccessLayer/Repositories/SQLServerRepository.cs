@@ -41,7 +41,7 @@ namespace DataAccessLayer.Repositories
             }
             catch (Exception ex)
             {
-                Logger.Logger.LogException(ex);
+                SystemLogger.SystemLogger.LogException(ex);
                 return null;
             }
         }
