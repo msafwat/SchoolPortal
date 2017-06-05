@@ -3,6 +3,7 @@ using Entities.School;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,20 @@ namespace Entities.SchoolStakeholders
     {
         [Key]
         public int Id { get; set; }
-        
-        public int Code { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public string Code
+        {
+            get
+            {
+                return BirthDate.Year 
+                    + BirthDate.Month.ToString().PadLeft(2, '0') 
+                    + BirthDate.Day.ToString().PadLeft(2, '0') 
+                    + Id.ToString().PadLeft(8, '0');
+            }
+
+            private set { }
+        }
 
         [Required]
         [MaxLength(16)]
@@ -28,6 +41,7 @@ namespace Entities.SchoolStakeholders
         [MaxLength(16)]
         public string LastName { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public string FullName
         {
             get
@@ -40,6 +54,8 @@ namespace Entities.SchoolStakeholders
                     .Append(LastName)
                     .ToString();
             }
+
+            private set { }
         }
 
         [Required]
