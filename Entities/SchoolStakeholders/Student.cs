@@ -13,13 +13,18 @@ namespace Entities.SchoolStakeholders
     {
         [Key]
         public int Id { get; set; }
+        
+        public int Code { get; set; }
 
+        [Required]
         [MaxLength(16)]
         public string FirstName { get; set; }
 
+        [Required]
         [MaxLength(16)]
         public string MiddledName { get; set; }
 
+        [Required]
         [MaxLength(16)]
         public string LastName { get; set; }
 
@@ -37,8 +42,19 @@ namespace Entities.SchoolStakeholders
             }
         }
 
+        [Required]
+        public string Passport { get; set; }
+
+        [Required]
         public DateTime BirthDate { get; set; }
 
-        public List<SchoolCurriculumStudent> SchoolCurriculums { get; set; }
+        [Required]
+        public string Address { get; set; }
+
+        //public List<Parent> Parents { get; set; }
+
+        //public List<Student> BrothersAndSisters { get; set; }
+
+        //public List<SchoolCurriculumStudent> SchoolCurriculums { get; set; }
     }
 }

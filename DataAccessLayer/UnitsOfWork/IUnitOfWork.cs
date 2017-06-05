@@ -2,6 +2,7 @@
 using Entities;
 using Entities.QuestionsBank;
 using Entities.School;
+using Entities.SchoolStakeholders;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +15,8 @@ namespace DataAccessLayer.UnitsOfWork
     public interface IUnitOfWork : IDisposable
     {
         IRepository<School> GetSchoolRepository();
+
+        IRepository<Student> GetStudentRepository();
 
         IRepository<Question> GetQuestionRepository();
 

@@ -59,6 +59,8 @@
   <ItemGroup>
     <Compile Include="BusinessLogicFacade.cs" />
     <Compile Include="Helper\BusinessHelper.cs" />
+    <Compile Include="Managers\BaseManager.cs" />
+    <Compile Include="Managers\StudentManager.cs" />
     <Compile Include="Messages\ResponseCodeMessageListResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Managers\QuestionManager.cs" />

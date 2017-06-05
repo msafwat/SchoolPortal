@@ -14,14 +14,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Managers
 {
-    internal class QuestionManager
+    internal class QuestionManager : BaseManager<Question>
     {
-        private IUnitOfWork work;
-        private IRepository<Question> repo;
-
-        internal QuestionManager()
+        internal QuestionManager() : base()
         {
-            work = UnitOfWorkFactory.Create();
             repo = work.GetQuestionRepository();
         }
 

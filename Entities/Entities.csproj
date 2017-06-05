@@ -77,6 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcadmicYear\AcadmicYear.cs" />
     <Compile Include="QuestionsBank\Answer.cs" />
     <Compile Include="SchoolStakeholders\Admin.cs" />
     <Compile Include="SchoolStakeholders\User.cs" />

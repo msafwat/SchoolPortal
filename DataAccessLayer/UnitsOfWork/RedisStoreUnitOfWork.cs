@@ -10,6 +10,7 @@ using Entities.QuestionsBank;
 using Entities.School;
 using System.Net;
 using ServiceStack.Redis;
+using Entities.SchoolStakeholders;
 
 namespace DataAccessLayer.UnitsOfWork
 {
@@ -85,6 +86,11 @@ namespace DataAccessLayer.UnitsOfWork
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public IRepository<Student> GetStudentRepository()
+        {
+            throw new NotImplementedException();
         }
     }
 }
