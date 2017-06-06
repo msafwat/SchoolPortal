@@ -22,14 +22,14 @@ namespace GlobalizationResources.Resources.Views {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Schools {
+    public class Students {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Schools() {
+        internal Students() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace GlobalizationResources.Resources.Views {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GlobalizationResources.Resources.Views.Schools", typeof(Schools).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GlobalizationResources.Resources.Views.Students", typeof(Students).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,11 @@ namespace GlobalizationResources.Resources.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to School Name.
+        ///   Looks up a localized string similar to Create New Student.
         /// </summary>
-        public static string SchoolName {
+        public static string Create {
             get {
-                return ResourceManager.GetString("SchoolName", resourceCulture);
+                return ResourceManager.GetString("Create", resourceCulture);
             }
         }
     }

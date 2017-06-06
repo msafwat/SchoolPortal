@@ -1,13 +1,15 @@
-﻿@model Entities.SchoolStakeholders.Student
+﻿@using GlobalizationResources.Resources.Views
+
+@model Entities.SchoolStakeholders.Student
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = Students.Create;
 }
 
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Ajax.BeginForm(new AjaxOptions()))
 {
     @Html.AntiForgeryToken()
     

@@ -16,7 +16,7 @@ namespace SchoolPortal.Areas.SchoolStakeholders
         {
             context.MapRoute(
                 "SchoolStakeholders_default",
-                "Stakeholders/{controller}/{action}/{id}",
+                "SchoolStakeholders/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
