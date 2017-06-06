@@ -204,6 +204,8 @@
     <Compile Include="Areas\Errors\ErrorsAreaRegistration.cs" />
     <Compile Include="Areas\Questions\Controllers\QuestionsController.cs" />
     <Compile Include="Areas\Questions\QuestionsAreaRegistration.cs" />
+    <Compile Include="Areas\SchoolStakeholders\Controllers\StudentsController.cs" />
+    <Compile Include="Areas\SchoolStakeholders\SchoolStakeholdersAreaRegistration.cs" />
     <Compile Include="ControllersHandlers\CustomControllerActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="ControllersHandlers\BaseController.cs" />
@@ -249,6 +251,14 @@
     <Content Include="Areas\Errors\Views\ErrorManager\Status404.cshtml" />
     <Content Include="Areas\Errors\Views\ErrorManager\Status403.cshtml" />
     <Content Include="Areas\Errors\Views\ErrorManager\Status500.cshtml" />
+    <Content Include="Areas\SchoolStakeholders\Views\web.config" />
+    <Content Include="Areas\SchoolStakeholders\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\SchoolStakeholders\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\SchoolStakeholders\Views\Students\Create.cshtml" />
+    <Content Include="Areas\SchoolStakeholders\Views\Students\Delete.cshtml" />
+    <Content Include="Areas\SchoolStakeholders\Views\Students\Details.cshtml" />
+    <Content Include="Areas\SchoolStakeholders\Views\Students\Edit.cshtml" />
+    <Content Include="Areas\SchoolStakeholders\Views\Students\Index.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1729,6 +1739,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Errors\Models\" />
     <Folder Include="Areas\Questions\Models\" />
+    <Folder Include="Areas\SchoolStakeholders\Models\" />
     <Folder Include="Filters\" />
     <Folder Include="Views\Student\" />
   </ItemGroup>

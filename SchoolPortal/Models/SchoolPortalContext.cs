@@ -21,5 +21,7 @@ namespace SchoolPortal.Models
         }
 
         public System.Data.Entity.DbSet<QuestionType> QuestionTypes { get; set; }
+
+        public System.Data.Entity.DbSet<Entities.SchoolStakeholders.Student> Students { get; set; }
     }
 }
